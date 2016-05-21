@@ -1,0 +1,74 @@
+body {
+  padding-left: 175px;
+  padding-right: 175px;
+}
+
+#logo {
+  float:left;
+}
+
+.socMedia {
+  float:right;
+}
+
+#mail {
+  margin-left: 2px;
+}
+
+#rss {
+  margin-left: 10px;
+}
+
+#pint {
+  margin-left: 1px;
+}
+
+#flic {
+  margin-left: 1px;
+}
+
+#insta {
+  margin-left: 2px;
+}
+
+#gp {
+  margin-left: 2px;
+}
+
+#twit {
+  margin-left: 2px;
+}
+
+#delic {
+  font-size: 1.70rem;
+}
+
+#header {
+  border-bottom: 15px solid;
+  padding-bottom: 40px;
+}
+
+/*hr {
+    height: 6px;
+    background: url(http://ibrahimjabbari.com/english/images/hr-11.png
+      repeat-x 0 0;
+   border: 0;
+ }*/
+
+#chocTitle {
+  display: inline-block;
+}
+
+#postTitle {
+  padding-top: 1.40em;
+  padding-bottom: .05em;
+  font-size: 2em;
+}
+
+#postDate {
+  font-size: .75em;
+}
+
+#printing {
+  float: right;
+}
