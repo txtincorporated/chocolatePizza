@@ -69,6 +69,39 @@ body {
   font-size: .75em;
 }
 
-#printing {
+#printer {
   float: right;
+}
+
+.big {
+  width: 100%;
+  margin-top: 5%;
+}
+
+p {
+  text-indent: 20px;
+}
+
+label {
+
+}
+
+.recipe {
+  display: inline-block;
+}
+
+#ibLeft {
+  float: left;
+}
+
+#ibRight {
+  float: right;
+}
+
+#relative-position {
+  position: relative;;
+}
+
+.absolute-position {
+  position: absolute;
 }
