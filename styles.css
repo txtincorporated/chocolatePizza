@@ -82,26 +82,47 @@ p {
   text-indent: 20px;
 }
 
-label {
-
+#picDiv {
+  position: relative;
+  width: 100%;
+  margin-top: -40px;
 }
 
-.recipe {
-  display: inline-block;
-}
 
-#ibLeft {
-  float: left;
-}
-
-#ibRight {
-  float: right;
-}
-
-#relative-position {
-  position: relative;;
-}
-
-.absolute-position {
+#text {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 315px;
+  -moz-column-gap: 315px;
+  column-gap: 315px;
+  /*text-align: center;*/
   position: absolute;
+  z-index: 100;
+  left: 80px;
+  top: 80px;
+  font-size: 1.75em;
+}
+
+#footer {
+  margin-top: 25px;
+}
+
+.hrThree {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.hrThree img {
+  position: relative;
+  margin-top: -30px;
+}
+
+#copy1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#copy2 {
+  text-align: center;
 }
