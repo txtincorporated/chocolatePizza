@@ -1,4 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Rock+Salt);
+
 body {
+  width: 890px;
   padding-left: 175px;
   padding-right: 175px;
 }
@@ -46,6 +49,7 @@ body {
 #header {
   border-bottom: 15px solid;
   padding-bottom: 40px;
+  color:#d9d9d9;
 }
 
 /*hr {
@@ -71,37 +75,134 @@ body {
 
 #printer {
   float: right;
+  margin-bottom: 5%;
 }
 
 .big {
   width: 100%;
-  margin-top: 5%;
 }
 
-p {
+.body-text {
+  font-family: Cambria, Garamond, serif;
+  font-weight:lighter;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.indented {
   text-indent: 20px;
 }
 
-label {
+#lastPara {
+  margin-bottom: 1.5rem;
+}
 
+#list{
+  position: relative;
 }
 
 .recipe {
-  display: inline-block;
+  width: 890px;
+  margin: 0 0 1rem 0;
+  padding: 0 0 1.5rem 0;
+  font-family: "Rock Salt", cursive;
+  font-size: .75rem;
+  border-bottom: 15px solid #d9d9d9;
 }
 
 #ibLeft {
   float: left;
+  margin: 2rem 3rem 0 2.75rem;
+  width: 445px;
 }
 
 #ibRight {
-  float: right;
-}
-
-#relative-position {
-  position: relative;;
+  float: left;
+  margin: 2rem 0 0 25rem;
+  width: 445px;
+  overflow:hidden;
 }
 
 .absolute-position {
   position: absolute;
+  opacity: 0.5;
+}
+
+.blockLine {
+  display: inline-block;;
+}
+
+#vanessa {
+  /*padding: 1rem 0 0 0;*/
+  display: inline-block;
+}
+
+#vanny {
+  margin: 1rem 0 0 0;
+  vertical-align: top;
+}
+.profile {
+  color: #595959;
+  display: inline-block;
+}
+
+#author {
+  font-size: 1.375rem;
+  line-height: 0.5rem;
+  /*margin: 2rem 0 0 0;*/
+}
+
+#shareBttn {
+  display: inline-block;
+  vertical-align: top;
+  float:right;
+  margin: 3rem 0 0 6rem;
+  background-color: #bc6d5e;
+  height: 3rem;
+  width: 10rem;
+  padding-bottom: 0.5rem;
+}
+
+#shareBttn p {
+  text-align: center;
+  color: white;
+  font-family: "Avenir Next Condensed", Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 1.125rem;
+}
+
+#delicious {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  opacity: 0.5;
+}
+
+#hrLeft {
+  display: inline-block;
+  position: relative;
+  float: left;
+  margin: 1rem 0 2rem 0;
+  width: 445px;
+}
+
+#hrMid {
+  display: inline-block;
+  position: absolute;
+  height: 33px;
+  width: 33px;
+  margin: 0.33rem 0.125rem 0 0.160rem;
+  box-shadow: 0 0 10px 10px white;
+}
+
+#hrRight {
+  display: inline-block;
+  /*position:relative;*/
+  float: right;
+  margin: 1rem 0 2rem 0;
+  width: 445px;
+}
+
+#intprop {
+  text-align: center;
+  margin: 4rem 0 0 0;
 }
