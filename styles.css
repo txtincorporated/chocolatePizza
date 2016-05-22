@@ -40,20 +40,28 @@ body {
 }
 
 #delic {
-  font-size: 1.70rem;
+  font-size: 2.5rem;
+  font-family: 'Damion', cursive;
+  margin-top: -10px;
+  margin-left: 7px;
+}
+
+#slogan {
+  margin-top: -11px;
+  font-size: .75rem;
+  margin-left: 7px;
 }
 
 #header {
-  border-bottom: 15px solid;
   padding-bottom: 40px;
 }
 
-/*hr {
-    height: 6px;
-    background: url(http://ibrahimjabbari.com/english/images/hr-11.png
-      repeat-x 0 0;
-   border: 0;
- }*/
+#hrOne {
+  height: 6px;
+  background: url(http://ibrahimjabbari.com/english/images/hr-11.png)
+  repeat-x 0 0;
+  border: 0;
+ }
 
 #chocTitle {
   display: inline-block;
@@ -88,7 +96,6 @@ p {
   margin-top: -40px;
 }
 
-
 #text {
   -webkit-column-count: 2;
   -moz-column-count: 2;
@@ -108,6 +115,29 @@ p {
   margin-top: 25px;
 }
 
+#name {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  margin-left: 8px;
+}
+
+#about {
+  margin-left: 8px;
+  font-size: 1.25em;
+}
+
+#button {
+  float: right;
+  margin-top: -80px;
+  border: none;
+  border-radius: 0px;
+  padding: 15px 28px;
+  background-color: #BD7D68;
+  font-size: 1em;
+  color: #fff;
+
+}
+
 .hrThree {
   text-align: center;
   margin-top: 80px;
@@ -121,8 +151,11 @@ p {
 #copy1 {
   text-align: center;
   margin-top: 30px;
+  color: lightgrey;
 }
 
 #copy2 {
   text-align: center;
+  color: lightgrey;
+  margin-bottom: 30px;
 }
