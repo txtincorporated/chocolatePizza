@@ -71,23 +71,28 @@ body {
   padding-top: 1.40em;
   padding-bottom: .05em;
   font-size: 2em;
+  font-weight: bold;
+  font-family:
 }
 
 #postDate {
   font-size: .75em;
+  color: lightgrey;
 }
 
 #printer {
   float: right;
+  color: lightgrey;
 }
 
 .big {
   width: 100%;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 p {
   text-indent: 20px;
+  font-size: 1.25em;
 }
 
 #picDiv {
@@ -100,15 +105,30 @@ p {
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
-  -webkit-column-gap: 315px;
-  -moz-column-gap: 315px;
-  column-gap: 315px;
-  /*text-align: center;*/
+  -webkit-column-gap: 60px;
+  -moz-column-gap: 60px;
+  column-gap: 60px;
   position: absolute;
   z-index: 100;
-  left: 80px;
+  left: 60px;
   top: 80px;
   font-size: 1.75em;
+}
+
+label {
+  opacity: .5;
+}
+
+.crossout {
+  text-decoration: line-through;
+}
+
+#hrTwo {
+  height: 6px;
+  background: url(http://ibrahimjabbari.com/english/images/hr-11.png)
+  repeat-x 0 0;
+  border: 0;
+  margin-top: 35px;
 }
 
 #footer {
@@ -117,7 +137,7 @@ p {
 
 #name {
   font-size: 1.5em;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   margin-left: 8px;
 }
 
@@ -135,7 +155,7 @@ p {
   background-color: #BD7D68;
   font-size: 1em;
   color: #fff;
-
+  font-weight: 100;
 }
 
 .hrThree {
