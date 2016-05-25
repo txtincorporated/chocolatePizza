@@ -101,11 +101,24 @@ function scoreKeeper () {
 };
 
 
-// //GENERATE TABLE FOR THUMBS AND RESULTS
-// function tableMaker () {
-//   for (var i = 0; i<picDivs.length; i++) {
-//     //add row
-//     //add cell
-//     //add Image.src, .views, .votes, and .score
-//   }
-// };
+//GENERATE TABLE FOR THUMBS AND RESULTS
+function tableMaker (data) {
+  var newTable = document.getElementById ('table');
+  for (var i = 0; i<imageObjs.length/5; i++) {
+    var newRow = document.createElement('tr');
+    for (var j = (i*5)+1; j<(i*5)+6; j++){
+      var newCell = document.createElement('td');
+      var newThumb = (imageObjs.length-(([i]+1)*5)-j).src;
+      newCell.style['background-image'].height = 150;
+      newCell.style['background-image'].width = 150;
+      // newCell.style['background-image'].display = cover;
+      var newViews = ((imageObjs.length-(([i]+1)*5)-j)).views;
+      // var newEyeballs = newCell.appendChild(newViews);
+      var newVotes = ((imageObjs.length-(([i]+1)*5)-j)).votes;
+      var newTally = newCell.appendChild(newVotes);
+      var almostThere = newRow.appendChild(newCell);
+      var oneRowDown = newTable.appendChild(newRow);
+    };
+  }
+};
+tableMaker(imageObjs);
