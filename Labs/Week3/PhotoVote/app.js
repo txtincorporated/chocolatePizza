@@ -39,6 +39,8 @@ var imageObjs = [];
 // var imageViews = [];
 // var imageVotes = [0,0,0,0,0,0,0...];
 
+var userClicks = 0;
+
 //IMG OBJ CONSTRUCTOR
 var Image = function (name) {
   this.name = name;
@@ -90,35 +92,33 @@ function goPics () {
 };
 goPics();
 
-for (var i = 0; i<thisDiv.length; i++) {
-  thisDiv[i].addEventListener('click',scoreKeeper, false);
-  console.log(thisDiv[i]);
-};
-
 console.log(thisImg);
 function scoreKeeper () {
   thisImg.tallyvote();
+  userClicks ++;
+  return thisImg.votes;
 };
+console.log(scoreKeeper());
+console.log(userClicks);
+
+for (var i = 0; i<thisDiv.length; i++) {
+  thisDiv[i].addEventListener('click',scoreKeeper, false);
+  thisDiv[i].addEventListener('click',countClicks, false);
+  console.log(thisDiv[i]);
+};
+
 
 
 //GENERATE TABLE FOR THUMBS AND RESULTS
-function tableMaker (data) {
-  var newTable = document.getElementById ('table');
-  for (var i = 0; i<imageObjs.length/5; i++) {
-    var newRow = document.createElement('tr');
-    for (var j = (i*5)+1; j<(i*5)+6; j++){
-      var newCell = document.createElement('td');
-      var newThumb = (imageObjs.length-(([i]+1)*5)-j).src;
-      newCell.style['background-image'].height = 150;
-      newCell.style['background-image'].width = 150;
-      // newCell.style['background-image'].display = cover;
-      var newViews = ((imageObjs.length-(([i]+1)*5)-j)).views;
-      // var newEyeballs = newCell.appendChild(newViews);
-      var newVotes = ((imageObjs.length-(([i]+1)*5)-j)).votes;
-      var newTally = newCell.appendChild(newVotes);
-      var almostThere = newRow.appendChild(newCell);
-      var oneRowDown = newTable.appendChild(newRow);
-    };
-  }
-};
-tableMaker(imageObjs);
+// function tableMaker () {
+//   var statsTable = document.getElementById('tbl');
+//   var newTable = document.createElement('table');
+//   var newTr = document.createElement('tr');
+//   var newTd1 = document.createElement('td');
+//   var newTd2 = document.createElement('td');
+//   newTr.appendChild(newTd1);
+//   newTr.appendChild(newTd2);
+//   newTable.appendChild(newTr);
+//   statsTable.appendChild(newTable);
+// };
+// tableMaker();
