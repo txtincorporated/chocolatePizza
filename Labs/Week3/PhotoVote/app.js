@@ -21,11 +21,23 @@ var divImgs = ['8.560.jpg',
 'tumblr_nl2xsiq9AI1upbk6jo1_500.jpg',
 'world-beard-moustache-championship-photography-austria-fb1.jpg'];//images to populate imgDivs
 
+var imgCaptions = [];
+
+var captionator = function () {
+  for (var i = 0; i < divImgs.length; i++) {
+    var caption = 'Picture ' + [i];
+    imgCaptions.push(caption);
+  }
+};
+captionator();
+
+
 //IMG DEFAULTS
 var thisDiv = document.getElementsByClassName('imgDiv');
 var picDivIds = ['pc1', 'pc2', 'pc3'];
 var picDivs = [];
 var thisImg;
+var idx;
 
 var picDivver = function () {
   for (var i = 0; i < picDivIds.length; i++) {
@@ -36,9 +48,6 @@ var picDivver = function () {
 picDivver();
 
 var imageObjs = [];
-// var imageViews = [];
-// var imageVotes = [0,0,0,0,0,0,0...];
-
 var userClicks = 0;
 
 //IMG OBJ CONSTRUCTOR
@@ -69,44 +78,40 @@ for (var i = 0; i<divImgs.length; i++) {
 
 //for each picture in the array...reset to next pic
 function goPics () {
-  //need function right here to increment picture's votes
   console.log(thisImg);
-  for (var i=0; i < picDivs.length; i++){
-    console.log(i);
-    function switchPic () {
-      var next = Math.floor(divImgs.length * Math.random());
-      // console.log(picDiv);
-      thisImg = imageObjs[next].src;
-      console.log(thisImg);
-      picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
-      picDivs[i].idx = next;
-      thisImg = imageObjs[next];
-      console.log(thisImg);
-      thisImg.tallyview();
-      console.log(thisImg.views);
-      // picDiv.addEventListener('click', tallyVote);
-    }
+  for (var i = 0; i < picDivs.length; i++){
+    var next = Math.floor(divImgs.length * Math.random());
+    thisImg = imageObjs[next].src;
+    console.log(thisImg);
+    picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
+    picDivs[i].idx = next;
+    thisImg = imageObjs[next];
+    thisImg.tallyview();
+    console.log(thisImg.name + 'views:' + thisImg.views);
+    console.log(imageObjs[i].name + 'votes: ' + imageObjs[i].votes);
+  }
+  for (var i = 0; i<thisDiv.length; i++) {
+    picDivs[i].addEventListener('click',function (e) {
+      scoreKeeper(e);
+    }, false);
+    console.log(thisDiv[i]);
+// function switchPic () {
+    // };
     // console.log(switchPic);
-    switchPic();
+    // switchPic();
   }
 };
 goPics();
-console.log(thisImg);
 
-function scoreKeeper (div) {
-  imageObjs[div.idx].tallyvote();
+//log image ids in pc1-pc3
+function scoreKeeper(e) {
+  console.log(e);
+  targetDiv = e.target;
+  imageObjs[targetDiv.idx].tallyvote();
   userClicks += 1;
-  console.log(userClicks);
   goPics();
-  return thisImg.votes;
 };
-
-for (var i = 0; i<thisDiv.length; i++) {
-  picDivs[i].addEventListener('click',function () {
-    scoreKeeper(picDivs[i]);
-  }, false);
-  console.log(thisDiv[i]);
-};
+console.log(userClicks);
 
 function showChart () {
   document.getElementById('tbl');
@@ -122,7 +127,7 @@ function countClicks () {
   var bigSixteen = document.getElementsByTagName('button');
   var showResults = document.getElementById('button1');
   var showResults = document.getElementById('button2');
-  if (userClicks >= 16) {
+  if (userClicks >= 5) {
     bigSixteen.visibility = 'visible';
     button1.addEventListener('click', showChart);
     button2.addEventListener('click', keepGoing);
@@ -142,3 +147,47 @@ function countClicks () {
 //   statsTable.appendChild(newTable);
 // };
 // tableMaker();
+
+// addEventListener('load', drawRandomData);
+//
+// function draw(numArray, pcntArray, labelArray) {
+//   var canvas = document.getElementById('canvas');
+//
+//
+// // thanks to Chart.js
+//   var statsView = new Chart(canvas, {
+//     type: 'bar',
+//     data: {
+//       labels: labelArray,
+//       datasets: [{
+//         label: 'Views',
+//         data: numArray,
+//         label: 'Votes',
+//         data: numArray,
+//       },
+//         {
+//           label: 'Score',
+//           data: pcntArray
+//         }]
+//     },
+//     options: {
+//       scales: {
+//         yAxes: [{
+//           ticks: { beginAtZero:true }
+//         }]
+//       }
+//     }
+//   });
+// }
+//
+// //draw(getRandomData());
+// function drawRandomData() {
+//   var data = [];
+//   var percents = [];
+//   for (var ii = 0; ii < productNames.length; ii++) {
+//     data.push(Math.ceil(Math.random() * 100));
+//     percents.push(Math.ceil(Math.random() * 100));
+//   }
+//   console.log(data);
+//   draw(data, percents, productNames);
+// }
