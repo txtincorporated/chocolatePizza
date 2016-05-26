@@ -79,11 +79,11 @@ function goPics () {
       thisImg = imageObjs[next].src;
       console.log(thisImg);
       picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
+      picDivs[i].idx = next;
       thisImg = imageObjs[next];
       console.log(thisImg);
       thisImg.tallyview();
       console.log(thisImg.views);
-      picDivs[i].addEventListener('click', goPics);
       // picDiv.addEventListener('click', tallyVote);
     }
     // console.log(switchPic);
@@ -91,23 +91,43 @@ function goPics () {
   }
 };
 goPics();
-
 console.log(thisImg);
-function scoreKeeper () {
-  thisImg.tallyvote();
-  userClicks ++;
+
+function scoreKeeper (div) {
+  imageObjs[div.idx].tallyvote();
+  userClicks += 1;
+  console.log(userClicks);
+  goPics();
   return thisImg.votes;
 };
-console.log(scoreKeeper());
-console.log(userClicks);
 
 for (var i = 0; i<thisDiv.length; i++) {
-  thisDiv[i].addEventListener('click',scoreKeeper, false);
-  thisDiv[i].addEventListener('click',countClicks, false);
+  picDivs[i].addEventListener('click',function () {
+    scoreKeeper(picDivs[i]);
+  }, false);
   console.log(thisDiv[i]);
 };
 
+function showChart () {
+  document.getElementById('tbl');
+  tbl.visibility = 'visible';
+};
 
+function keepGoing () {
+  document.getElementsByTagName('button');
+  button.visibility = 'hidden';
+};
+
+function countClicks () {
+  var bigSixteen = document.getElementsByTagName('button');
+  var showResults = document.getElementById('button1');
+  var showResults = document.getElementById('button2');
+  if (userClicks >= 16) {
+    bigSixteen.visibility = 'visible';
+    button1.addEventListener('click', showChart);
+    button2.addEventListener('click', keepGoing);
+  }
+};
 
 //GENERATE TABLE FOR THUMBS AND RESULTS
 // function tableMaker () {
