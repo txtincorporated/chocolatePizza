@@ -19,18 +19,8 @@ var divImgs = ['8.560.jpg',
 'merman-trend-colored-hair-beards-0.jpg',
 'merman-trend-colored-hair-beards-18.jpg',
 'tumblr_nl2xsiq9AI1upbk6jo1_500.jpg',
-'world-beard-moustache-championship-photography-austria-fb1.jpg'];//images to populate imgDivs
-
-var imgCaptions = [];
-
-var captionator = function () {
-  for (var i = 0; i < divImgs.length; i++) {
-    var caption = 'Picture ' + [i];
-    imgCaptions.push(caption);
-  }
-};
-captionator();
-
+'world-beard-moustache-championship-photography-austria-fb1.jpg',
+'knit-beard-hat2-e1344992057708.jpg'];//images to populate imgDivs
 
 //IMG DEFAULTS
 var thisDiv = document.getElementsByClassName('imgDiv');
@@ -49,6 +39,7 @@ picDivver();
 
 var imageObjs = [];
 var userClicks = 0;
+var imgScores = [];
 
 //IMG OBJ CONSTRUCTOR
 var Image = function (name) {
@@ -56,83 +47,149 @@ var Image = function (name) {
   this.src = 'assets/' + name;
   this.votes = 0;
   this.views = 0;
+  this.score = 0;
 
+  //set this.votes
   this.tallyvote = function () {
     this.votes++;
   };
+
+  //set this.views
   this.tallyview = function () {
     this.views++;
   };
 
-  this.score = function () {
-    var pctVotes = ((this.votes/this.views) * 100) + '%';
+  //set this.score
+  this.scoring = function () {
+    var pctVotes = ((this.votes/this.views) * 100);
+    if (pctVotes) {
+      this.score = pctVotes;
+    }
   };
 };
 
 //GENERATE IMG OBJS.
-for (var i = 0; i<divImgs.length; i++) {
-  imgObj = new Image (divImgs[i]);
-  imageObjs.push(imgObj);
-  // imageViews.push(imgObj.views);
-}
+var imagator = function () {
+  for (var i = 0; i<divImgs.length; i++) {
+    imgObj = new Image (divImgs[i]);
+    imageObjs.push(imgObj);
+  };
+};
+imagator ();
 
-//for each picture in the array...reset to next pic
+var imgCaptions = [];
+
+var captionator = function () {
+  for (var i = 0; i < divImgs.length; i++) {
+    var caption = 'Picture ' + [i+1];
+    imgCaptions.push(caption);
+  }
+};
+captionator ();
+
+// for (var i = 0; i < imageObjs.length; i++) {
+//   imageObjs[i].scoring();
+//   imgScores.push(Math.round(imageObjs[i].score));
+// };
+
+for (var i = 0; i<thisDiv.length; i++) {
+  picDivs[i].addEventListener('click',function (e) {
+    scoreKeeper(e);
+  }, false);
+};
+
+//initialize page content, then on call, for each picDiv in the array, reset to next pic
 function goPics () {
-  console.log(thisImg);
   for (var i = 0; i < picDivs.length; i++){
     var next = Math.floor(divImgs.length * Math.random());
     thisImg = imageObjs[next].src;
-    console.log(thisImg);
     picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
     picDivs[i].idx = next;
     thisImg = imageObjs[next];
     thisImg.tallyview();
-    console.log(thisImg.name + 'views:' + thisImg.views);
-    console.log(imageObjs[i].name + 'votes: ' + imageObjs[i].votes);
-  }
-  for (var i = 0; i<thisDiv.length; i++) {
-    picDivs[i].addEventListener('click',function (e) {
-      scoreKeeper(e);
-    }, false);
-    console.log(thisDiv[i]);
-// function switchPic () {
-    // };
-    // console.log(switchPic);
-    // switchPic();
   }
 };
 goPics();
 
 //log image ids in pc1-pc3
 function scoreKeeper(e) {
-  console.log(e);
   targetDiv = e.target;
   imageObjs[targetDiv.idx].tallyvote();
+  imageObjs[targetDiv.idx].scoring();
+  imgScores[targetDiv.idx]=Math.round(imageObjs[targetDiv.idx].score);
   userClicks += 1;
+  countClicks();
+  function checkButtons () {
+    if (buttons.style.display = 'block') {
+      return;
+    }
+  }
   goPics();
 };
-console.log(userClicks);
 
-function showChart () {
-  document.getElementById('tbl');
-  tbl.visibility = 'visible';
-};
 
-function keepGoing () {
-  document.getElementsByTagName('button');
-  button.visibility = 'hidden';
-};
+// function showChart () {
+//   document.getElementById('tbl');
+//   tbl.visibility = 'visible';
+// };
+
+// function keepGoing () {
+//   document.getElementsByTagName('button');
+//   button.visibility = 'hidden';
+// };
 
 function countClicks () {
-  var bigSixteen = document.getElementsByTagName('button');
+  var resultsBttn = document.getElementById('littleMask');
   var showResults = document.getElementById('button1');
-  var showResults = document.getElementById('button2');
+  var eightsEnuff = document.getElementById('button2');
   if (userClicks >= 5) {
-    bigSixteen.visibility = 'visible';
+    resultsBttn.style.display = 'block';
+    showResults.style.display = 'block';
     button1.addEventListener('click', showChart);
-    button2.addEventListener('click', keepGoing);
+    // button2.addEventListener('click', keepGoing);
   }
 };
+
+function showChart () {
+  var chartView = document.getElementById('chartDiv');
+  chartView.style.display = 'block';
+};
+
+//Add animation
+
+addEventListener('load', drawRandomData);
+
+function draw(numArray, pcntArray, labelArray) {
+  var canvas = document.getElementsByTagName('canvas');
+
+// thanks to Chart.js
+  var statsView = new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels: labelArray,
+      datasets: [{
+        label: 'Score',
+        data: pcntArray
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: { beginAtZero:true }
+        }]
+      }
+    }
+  });
+}
+
+//draw(getRandomData());
+function drawRandomData() {
+  var data = [];
+  var percents = imgScores;
+  var labels = imgCaptions;
+
+  draw(data, percents, labels);
+}
 
 //GENERATE TABLE FOR THUMBS AND RESULTS
 // function tableMaker () {
@@ -147,47 +204,3 @@ function countClicks () {
 //   statsTable.appendChild(newTable);
 // };
 // tableMaker();
-
-// addEventListener('load', drawRandomData);
-//
-// function draw(numArray, pcntArray, labelArray) {
-//   var canvas = document.getElementById('canvas');
-//
-//
-// // thanks to Chart.js
-//   var statsView = new Chart(canvas, {
-//     type: 'bar',
-//     data: {
-//       labels: labelArray,
-//       datasets: [{
-//         label: 'Views',
-//         data: numArray,
-//         label: 'Votes',
-//         data: numArray,
-//       },
-//         {
-//           label: 'Score',
-//           data: pcntArray
-//         }]
-//     },
-//     options: {
-//       scales: {
-//         yAxes: [{
-//           ticks: { beginAtZero:true }
-//         }]
-//       }
-//     }
-//   });
-// }
-//
-// //draw(getRandomData());
-// function drawRandomData() {
-//   var data = [];
-//   var percents = [];
-//   for (var ii = 0; ii < productNames.length; ii++) {
-//     data.push(Math.ceil(Math.random() * 100));
-//     percents.push(Math.ceil(Math.random() * 100));
-//   }
-//   console.log(data);
-//   draw(data, percents, productNames);
-// }
