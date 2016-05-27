@@ -83,6 +83,11 @@ tr, td {
   display: none;
 }
 
+#button2 {
+  display: none;
+}
+
+
 #chartChart {
   /*margin: 25% 50% 0 10%;*/
   margin: 5% 0 0 15%;
