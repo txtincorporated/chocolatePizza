@@ -129,14 +129,13 @@ for (var i = 0; i<thisDiv.length; i++) {
 //initialize page content, then on call, for each picDiv in the array, reset to next pic
 function goPics () {
   for (var i = 0; i < picDivs.length; i++){
-    var next = Math.floor(divImgs.length * Math.random());
+    var next = Math.floor(divImgs.length * Math.random());//generate random
 
-    thisImg = imageObjs[next].src;
+    thisImg = imageObjs[next].src;//set image
     picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
     picDivs[i].idx = next;
 
-    thisCapt = imgCaptions[next];
-    console.log(thisCapt);
+    thisCapt = imgCaptions[next];//set caption
     captDivs[i].textContent = thisCapt;
     captDivs[i].idx = next;
 
