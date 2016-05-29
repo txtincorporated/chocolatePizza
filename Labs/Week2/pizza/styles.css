@@ -1,0 +1,251 @@
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+
+html {
+  background-image: url(http://cs630528.vk.me/v630528167/7cf/5lAAzfs4moU.jpg);
+  font-family: 'Audiowide', 'Roboto', sans-serif;
+  color: white;
+}
+
+body {
+  padding: 0 25px 0 25px;
+}
+
+span {
+  display: block;
+}
+
+#sales {
+  background-image: none;
+  background-color: #262626;
+}
+
+nav {
+  /*vertical-align: bottom;*/
+  /*display:block;*/
+  /*margin: auto;*/
+  height:3rem;
+  text-align: center;
+  position: fixed;
+  margin: 0 0 45px 0;
+  width: 95%;
+  border-radius: 10px;
+  background-color: rgba(230, 245, 255, 0.25);
+  text-align: center;
+  vertical-align: middle;
+  z-index: 10;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #fee400;
+}
+
+.navdiv {
+  display: inline-block;
+  width: 33%;
+}
+
+.title-bar {
+  position: fixed;
+  margin:55px 0 0 0;
+  width: 95%;
+  height: auto;
+  border-radius: 10px;
+  background-color: rgba(230, 245, 255, 0.25);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.title {
+  margin: 0 0 0 0;
+}
+
+h1 {
+  font-size: 5em;
+  margin: 0,0,0,0;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  margin: 0,0,0,0;
+}
+
+#bodydiv {
+  /*margin: auto;*/
+  height:70%;
+  width:99.5%;
+}
+
+
+#storestats {
+  float: right;
+  /*margin: 200px 5px 0 0;*/
+}
+
+#storelinks {
+  float: left;
+  /*margin: 200px 5px 0 0;*/
+}
+
+.diptych {
+  background-color: rgba(86, 90, 92, 0.9);
+  display:inline-block;
+  position: relative;
+  margin:200px 0 0 0;
+  text-align: center;
+  vertical-align: top;
+  border-radius: 10px;
+  width:49.5%;
+  min-height: 500px;
+}
+
+.b2c {
+  background-color: rgba(230, 245, 255, 0.25);
+}
+
+#odysseys {
+  margin-left: 0.5%;
+}
+
+#served {
+  font-size: 12em;
+  margin-top: 10%
+}
+
+#statstop {
+  margin-bottom: 5%;
+}
+
+#addBttn {
+  height: 30px;
+  width: 25%;
+  margin: 0 50% 5% 38%;
+  color: white;
+  background-color: rgba(38, 38, 38, 0.75);
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px 0 0 0px;
+}
+
+#addBttn:hover {
+  background-image: url(http://thumbs.dreamstime.com/t/pepperoni-pizza-closeup-appetizing-background-filling-frame-42216725.jpg);
+  color: #993300;
+}
+
+table {
+  /*table-layout: fixed;*/
+  margin: auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  border: 1px solid white;
+  background-color: rgba(38, 38, 38, 0.75);
+  font-family: 'Roboto', sans-serif;;
+  font-size: .75em;
+  text-align: left;
+}
+
+.linkbttn {
+  /*table-layout: fixed;*/
+  margin: 0 5% 5% 2%;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  border: 1px solid white;
+  background-color: rgba(38, 38, 38, 0.75);
+  font-family: 'Audiowide','Roboto', sans-serif;;
+  font-size: .75em;
+  text-align: center;
+}
+
+.linkbttn:hover {
+  background-image: url(http://thumbs.dreamstime.com/t/pepperoni-pizza-closeup-appetizing-background-filling-frame-42216725.jpg);
+  back
+  color: #662200;
+  opacity:0.75;
+}
+
+th, td {
+  border-bottom: 1px solid rgba(230, 245, 255, 0.10);
+  height:1.5em;
+}
+
+.th-centered {
+  text-align: center;
+}
+
+td {
+  font-weight: lighter;
+  text-align: center;
+}
+
+#second {
+  border-bottom: 1px solid rgba(230, 245, 255, 0.50);
+}
+
+[scope=row] {
+  width: 5%;
+}
+
+tr {
+  width: 25%;
+}
+
+.lastrow {
+  border-bottom: none;
+}
+
+.backtop {
+  text-align: center;
+}
+
+#curtain {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.75;
+  position: fixed;
+  visibility: hidden;
+}
+
+form {
+  margin: 5% 3% 7% 3%;
+  padding: 2% 0 0 0;
+  text-align: center;
+  color: black;
+}
+
+form p {
+  font-family: "Audiowide";
+}
+
+form div {
+  height: 50px;
+  width: 33%;
+  margin: 5% 33% 0 33%;
+  color: white;
+  background-color: rgba(38, 38, 38, 0.75);
+  border-radius: 10px;
+  padding: 25px 0 0 0px;
+}
+
+form input {
+  height: 1.25rem;
+  width: 25rem;
+  font-size: 0.9rem;
+}
+
+#add-shop {
+  height: 50%;
+  width: 50%;
+  margin: 15% 35% 0 20%;
+  background-color: white;
+  position: fixed;
+  border-radius: 10px;
+  z-index: 9999;
+  visibility: hidden;
+}

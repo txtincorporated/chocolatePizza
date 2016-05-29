@@ -1,0 +1,55 @@
+html {
+  background-color: #ffffe6;
+  font-family: Helvetica, sans-serif;
+}
+
+.heading {
+  color: #800000;
+}
+
+p, ul, ol, li {
+  color: #4b6600;
+}
+
+
+.aboutNPK {
+  background-color: #f3fcc4;
+  width: 67%;
+  padding: 5em;
+  margin: auto;
+}
+
+#NPKinvitational {
+  background-color: #f3fcc4;
+  width: 45%;
+  padding: 2em;
+  margin: auto;
+}
+
+.leaderBoard {
+  text-align: center;
+}
+
+#challenger {
+  color: #800000;
+}
+
+#contestant {
+  font-size: 2em;
+  color: #4b6600;
+}
+
+#scoreLabel {
+font-size: 1.5em;
+color: #800000;
+}
+
+#points {
+font-size: 1.5em;
+color: #4b6600;
+}
+
+#responses {
+font-size: 1em;
+color: #800000;
+}

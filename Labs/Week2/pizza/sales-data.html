@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+  <html id="sales">
+    <head>
+      <meta></meta>
+      <title>CO 3001 Sales Area</title>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+      <nav>
+        <div class="navdiv"><p><a class="navtext" href = ''>Sales Support</a></p></div>
+        <div class="navdiv"><p><a class="navtext" href = ''>HR</a></p></div>
+        <div class="navdiv"><p><a class="navtext" href = 'index.html'>Home</a></p></div>
+      </nav>
+      <div class="title-bar">
+        <h1 class="title">CO 3001 Sales Area</h1>
+      </div>
+
+        <div id="bodydiv">
+          <div class="diptych" id="storelinks">
+            <h3 id="statstop">LOCATIONS</h3><!--table links here-->
+            <div id="addBttn">Add Shop</div>
+          </div>
+          <div  class="diptych" id="storestats">
+            <h3>STATS BY LOCATION</h3>
+            <div id="locations"><!--tables here-->
+            </div>
+          </div>
+        </div>
+    </div>
+      <div id="add-shop">
+        <form id="newForm" action="pushNew()">
+          <p>Add New 3001 Store</p>
+          <label id="brName">Branch name
+            <input type="text" name="name" placeholder="As shown in your setup materials" required="required" /><br /><br />
+          </label>
+          <label id="maxminPies">Max/min. pizzas hrly.
+            <input type="text" pies-hr="pies-hr" placeholder="Copy-paste from welcome e-mail" required="required" /><br /><br />
+          </label>
+          <label id="maxminDlvys">Max/min. deliveries hrly.
+            <input type="text" dlvys-hr="dlvys-hr" placeholder="Copy-paste from welcome e-mail" required="required" /><br /><br />
+          </label>
+          <div id="submit">
+            SUBMIT
+          </div>
+        </form>
+      </div>
+      <div id="curtain"></div>
+    </body>
+    <script src="app.js"></script>
+    <script src="stores.js"></script>
+  </html>
