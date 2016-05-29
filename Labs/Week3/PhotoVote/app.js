@@ -25,7 +25,9 @@ var divImgs = ['8.560.jpg',
 //IMG DEFAULTS
 var thisDiv = document.getElementsByClassName('imgDiv');
 var picDivIds = ['pc1', 'pc2', 'pc3'];
+var imgCaptIds = ['cpn1','cpn2','cpn3'];
 var picDivs = [];
+var captDivs = [];
 var thisImg;
 var idx;
 
@@ -36,6 +38,17 @@ var picDivver = function () {
   }
 };
 picDivver();
+
+var captDivver = function () {
+  for (var i = 0; i < imgCaptIds.length; i++) {
+    var captObj = document.getElementById(imgCaptIds[i]);
+    captDivs.push(captObj);
+  }
+};
+captDivver();
+
+
+
 
 var imageObjs = [];
 var userClicks = 0;
@@ -87,6 +100,21 @@ var captionator = function () {
 };
 captionator ();
 
+// var cptnThumbs = [];
+//
+// var thumbalizer = function () {
+//   for (var i = 0; i < divImgs.length; i++) {
+//     var thumbDiv = document.createElement('div');
+//     thumbDiv.style.height = '20px';
+//     thumbDiv.style.width = '20px';
+//     thumDiv.style['background-size'] = 'cover';
+//     var thumbnail = imageObjs[i].src;
+//     thumbDiv.style['background-image'] = thumbnail;
+//     cptnThumbs.push(thumbDiv);
+//   }
+// };
+// thumbalizer ();
+
 // for (var i = 0; i < imageObjs.length; i++) {
 //   imageObjs[i].scoring();
 //   imgScores.push(Math.round(imageObjs[i].score));
@@ -102,9 +130,16 @@ for (var i = 0; i<thisDiv.length; i++) {
 function goPics () {
   for (var i = 0; i < picDivs.length; i++){
     var next = Math.floor(divImgs.length * Math.random());
+
     thisImg = imageObjs[next].src;
     picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
     picDivs[i].idx = next;
+
+    thisCapt = imgCaptions[next];
+    console.log(thisCapt);
+    captDivs[i].textContent = thisCapt;
+    captDivs[i].idx = next;
+
     thisImg = imageObjs[next];
     thisImg.tallyview();
   }
@@ -127,32 +162,58 @@ function scoreKeeper(e) {
   goPics();
 };
 
-
-// function showChart () {
-//   document.getElementById('tbl');
-//   tbl.visibility = 'visible';
-// };
-
-// function keepGoing () {
-//   document.getElementsByTagName('button');
-//   button.visibility = 'hidden';
-// };
-
 function countClicks () {
   var resultsBttn = document.getElementById('littleMask');
   var showResults = document.getElementById('button1');
-  var eightsEnuff = document.getElementById('button2');
-  if (userClicks >= 5) {
+  // var eightsEnuff = document.getElementById('button2');
+  if (userClicks == 16) {
     resultsBttn.style.display = 'block';
     showResults.style.display = 'block';
-    button1.addEventListener('click', showChart);
-    // button2.addEventListener('click', keepGoing);
+    showResults.addEventListener('click', showChart);
+  } else if (userClicks == 24) {
+    resultsBttn.style.display = 'block';
+    showResults.style.display = 'block';
+    showResults.addEventListener('click', showChart);
   }
 };
+
+function keepGoing () {
+  var noButton1 = document.getElementById('button1');
+  var noButton2 = document.getElementById('button2');
+  var noLittleMask = document.getElementById('littleMask');
+  var noBigMask = document.getElementById('chartDiv');
+  noButton1.style.display = 'none';
+  noButton2.style.display = 'none';
+  noLittleMask.style.display = 'none';
+  noBigMask.style.display = 'none';
+};
+
+function reLoad () {
+  var newGrowth = document.location.reload(true); //on click event to #button3
+}
 
 function showChart () {
   var chartView = document.getElementById('chartDiv');
   chartView.style.display = 'block';
+  if (userClicks <= 16) {
+    var noButton1 = document.getElementById('button1');
+    var noLittleMask = document.getElementById('littleMask');
+    noButton1.style.display = 'none';
+    noLittleMask.style.display = 'none';
+
+    var eightMore = document.getElementById('button2');
+    eightMore.style.display = 'block';
+    eightMore.addEventListener('click', keepGoing);
+  } else if (userClicks <=24) {
+    var noButton1 = document.getElementById('button1');
+    var noLittleMask = document.getElementById('littleMask');
+    noButton1.style.display = 'none';
+    noLittleMask.style.display = 'none';
+
+    var unShave = document.getElementById('button3');
+    unShave.style.display = 'block';
+    unShave.addEventListener('click', reLoad);
+  }
 };
 
 //Add animation
