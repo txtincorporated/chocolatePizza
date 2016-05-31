@@ -47,12 +47,31 @@ var captDivver = function () {
 };
 captDivver();
 
-
-
-
 var imageObjs = [];
+
 var userClicks = 0;
+var setupClicks = function () {
+  if (localStorage.userClicks) {
+    var prevClicks = JSON.parse(localStorage.userClicks);
+    if (prevClicks > 0) {
+      userClicks = prevClicks;
+    }
+  }
+};
+setupClicks();
+
+console.log('userClicks = ' + userClicks);
+
 var imgScores = [];
+var setupScores = function () {
+  if (localStorage.imgScores) {
+    var prevScores = localStorage.imgScores;
+    for (var iii = 0; iii < prevScores.length; iii++) {
+      push.imgScores(prevScores[iii]);
+    }
+  }
+};
+
 
 //IMG OBJ CONSTRUCTOR
 var Image = function (name) {
@@ -82,13 +101,26 @@ var Image = function (name) {
 };
 
 //GENERATE IMG OBJS.
-var imagator = function () {
-  for (var i = 0; i<divImgs.length; i++) {
-    imgObj = new Image (divImgs[i]);
-    imageObjs.push(imgObj);
-  };
+function makeImgs () {
+  if (! localStorage.imageObjs) {
+    var imagator = function () {
+      for (var i = 0; i<divImgs.length; i++) {
+        imgObj = new Image (divImgs[i]);
+        imageObjs.push(imgObj);
+      };
+    };
+    imagator ();} else {
+
+    var reImage = JSON.parse(localStorage.imageObjs);
+    for (var ii = 0; ii < divImgs.length; ii++) {
+      imgObj = new Image (divImgs[ii]);
+      imgObj.votes = reImage[ii].votes;
+      imgObj.views = reImage[ii].views;
+      imageObjs.push(imgObj);
+    }
+  }
 };
-imagator ();
+makeImgs();
 
 var imgCaptions = [];
 
@@ -120,7 +152,7 @@ captionator ();
 //   imgScores.push(Math.round(imageObjs[i].score));
 // };
 
-for (var i = 0; i<thisDiv.length; i++) {
+for (var i = 0; i < thisDiv.length; i++) {
   picDivs[i].addEventListener('click',function (e) {
     scoreKeeper(e);
   }, false);
@@ -128,12 +160,17 @@ for (var i = 0; i<thisDiv.length; i++) {
 
 //initialize page content, then on call, for each picDiv in the array, reset to next pic
 function goPics () {
+  countClicks();
   for (var i = 0; i < picDivs.length; i++){
     var next = Math.floor(divImgs.length * Math.random());//generate random
 
     thisImg = imageObjs[next].src;//set image
     picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
     picDivs[i].idx = next;
+
+    localStorage.inProg = true;
+    console.log('inProg = ' + localStorage.inProg);
+    localStorage.picDivs = JSON.stringify(picDivs);
 
     thisCapt = imgCaptions[next];//set caption
     captDivs[i].textContent = thisCapt;
@@ -152,7 +189,13 @@ function scoreKeeper(e) {
   imageObjs[targetDiv.idx].scoring();
   imgScores[targetDiv.idx]=Math.round(imageObjs[targetDiv.idx].score);
   userClicks += 1;
+  console.log(imgScores);
+  console.log('userClicks = ' + userClicks);
   countClicks();
+  localStorage.imageObjs = JSON.stringify(imageObjs);
+  localStorage.userClicks = userClicks;
+  localStorage.imgScores = JSON.stringify(imgScores);
+
   function checkButtons () {
     if (buttons.style.display = 'block') {
       return;
@@ -165,11 +208,7 @@ function countClicks () {
   var resultsBttn = document.getElementById('littleMask');
   var showResults = document.getElementById('button1');
   // var eightsEnuff = document.getElementById('button2');
-  if (userClicks == 16) {
-    resultsBttn.style.display = 'block';
-    showResults.style.display = 'block';
-    showResults.addEventListener('click', showChart);
-  } else if (userClicks == 24) {
+  if (userClicks == 16 || userClicks == 24) {
     resultsBttn.style.display = 'block';
     showResults.style.display = 'block';
     showResults.addEventListener('click', showChart);
@@ -188,13 +227,14 @@ function keepGoing () {
 };
 
 function reLoad () {
+  localStorage.clear();
   var newGrowth = document.location.reload(true); //on click event to #button3
 }
 
 function showChart () {
   var chartView = document.getElementById('chartDiv');
   chartView.style.display = 'block';
-  if (userClicks <= 16) {
+  if (userClicks == 16) {
     var noButton1 = document.getElementById('button1');
     var noLittleMask = document.getElementById('littleMask');
     noButton1.style.display = 'none';
@@ -203,7 +243,8 @@ function showChart () {
     var eightMore = document.getElementById('button2');
     eightMore.style.display = 'block';
     eightMore.addEventListener('click', keepGoing);
-  } else if (userClicks <=24) {
+
+  } else if (userClicks == 24) {
     var noButton1 = document.getElementById('button1');
     var noLittleMask = document.getElementById('littleMask');
     noButton1.style.display = 'none';
