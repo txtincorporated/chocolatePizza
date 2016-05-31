@@ -6,16 +6,24 @@
 }
 
 .imgDiv{
-  height: 300px;
-  width: 300px;
+  height: 100%;
+  width: 20%;
   display: inline-block;
+}
+
+#captions {
+  margin: auto;
+  width: 60%;
+}
+
+.imgCptn {
+  /*display: inline-block;*/
 }
 
 #pc1 {
   background-image:;
   background-size: cover;
   background-position: center;
-
 }
 
 #pc2 {
@@ -28,42 +36,89 @@
   background-image:;
   background-size: cover;
   background-position: center;
-
 }
 
-#buttonDiv {
+/*.buttonDiv {
   display: none;
   width: 100%;
-}
+}*/
 
 .buttons {
-  display: inline-block;
+  margin: auto;
+  display: none;
+  /*position: fixed;*/
   /*visibility: hidden;*/
 }
 
-#tbl {
+.masks {
+  display: none;
+}
+
+/*#tbl {
   background-color: grey;
   min-height: 300px;
   min-width:912px;
   margin: 45px 0 0 0;
   visibility: hidden;
-}
+}*/
 
 tr, td {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
+  border: none;
 }
 
 #chartDiv {
-  height: 25%;
-  width: 85%;
-  background-color: blue;
+  height: 150%;
+  width: 150%;
+  margin: 0 0 0 0;
+  /*border: 5px solid white;*/
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  /*opacity: 0.1;*/
+  /*z-index: 9999;*/
   display: none;
 }
 
+#littleMask {
+  height: 60%;
+  width: 61%;
+  margin: 3% 25% 0 24%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  /*opacity: 1;*/
+  /*z-index: 9999;*/
+  display: none;
+}
+
+#button1 {
+  display: none;
+  margin: 45% 0 0 45%;
+}
+
+#button2 {
+  display: none;
+  margin: 0 5% 0 36%;
+  margin: -2% 5% 0 36%;
+}
+
+#button3 {
+  display: none;
+  margin: -2% 5% 0 36%;
+}
+
 #chartChart {
-  display: block;
+  /*margin: 25% 0 0 10%;*/
+  margin: 18% 0 0 15%;
+  width: 43%;
+  height: 45%;
+}
+
+canvas {
+  maintainAspectRatio: false;
+  responsive: true;
+  defaultColor: rgba(0, 0, 0, 1);
+  fontColor: rgba(0, 0, 0, 1);
+  background-color: rgba(255,255,255,1);
+  /*opacity: 0.1;*/
 }
 
 .animation1 {
