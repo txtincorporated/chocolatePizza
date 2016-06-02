@@ -22,6 +22,9 @@ var divImgs = ['8.560.jpg',
 'world-beard-moustache-championship-photography-austria-fb1.jpg',
 'knit-beard-hat2-e1344992057708.jpg'];//images to populate imgDivs
 
+//SESSION TESTER
+var firstRun = true;
+
 //IMG DEFAULTS
 var thisDiv = document.getElementsByClassName('imgDiv');
 var picDivIds = ['pc1', 'pc2', 'pc3'];
@@ -50,7 +53,7 @@ captDivver();
 var imageObjs = [];
 
 var userClicks = 0;
-var setupClicks = function () {
+var restoreState = function () {
   if (localStorage.userClicks) {
     var prevClicks = JSON.parse(localStorage.userClicks);
     if (prevClicks > 0) {
@@ -58,7 +61,7 @@ var setupClicks = function () {
     }
   }
 };
-setupClicks();
+restoreState();
 
 console.log('userClicks = ' + userClicks);
 
@@ -161,10 +164,15 @@ for (var i = 0; i < thisDiv.length; i++) {
 //initialize page content, then on call, for each picDiv in the array, reset to next pic
 function goPics () {
   countClicks();
+  if (firstRun = true || userClicks > 0) {
+    //restore previous imgs to picDivs and increment views
+  } else {
+    //run default code block below
+  }
   for (var i = 0; i < picDivs.length; i++){
     var next = Math.floor(divImgs.length * Math.random());//generate random
 
-    thisImg = imageObjs[next].src;//set image
+    thisImg = imageObjs[next].src;//set image; if restoring, thisImg = localStorage.picDivs[i].idx
     picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
     picDivs[i].idx = next;
 
