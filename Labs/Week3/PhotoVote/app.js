@@ -164,14 +164,16 @@ for (var i = 0; i < thisDiv.length; i++) {
 //initialize page content, then on call, for each picDiv in the array, reset to next pic
 function goPics () {
   countClicks();
-  if (firstRun = true || userClicks > 0) {
-    //restore previous imgs to picDivs and increment views
-  } else {
-    //run default code block below
-  }
+  var next;
   for (var i = 0; i < picDivs.length; i++){
-    var next = Math.floor(divImgs.length * Math.random());//generate random
-
+    if (firstRun = true && userClicks > 0) {
+    //restore previous imgs to picDivs and increment views
+      var result = JSON.parse(localStorage.picDivs);
+      next = result[i].idx;
+    } else {
+      //run default code block below
+      next = Math.floor(divImgs.length * Math.random());//generate random
+    }
     thisImg = imageObjs[next].src;//set image; if restoring, thisImg = localStorage.picDivs[i].idx
     picDivs[i].style['background-image'] = 'url' + '("' + thisImg + '")';
     picDivs[i].idx = next;
@@ -187,6 +189,8 @@ function goPics () {
     thisImg = imageObjs[next];
     thisImg.tallyview();
   }
+  firstRun = false;
+  console.log('firstRun: ' + firstRun);
 };
 goPics();
 
